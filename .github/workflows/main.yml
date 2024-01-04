@@ -21,13 +21,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Install Express
+        run: npm install express --save
+
       - name: Start Application
         run: node index.js
-
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
