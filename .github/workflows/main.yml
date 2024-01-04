@@ -19,10 +19,11 @@ jobs:
           node-version: '14'
 
       - name: Install Dependencies
-        run: npm install
+        run: npm install --save
 
       - name: Install Express
         run: npm install express --save
+             npm install dotenv --save
 
       - name: Start Application
         run: node index.js
