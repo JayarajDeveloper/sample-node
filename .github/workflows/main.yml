@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Start Application
-        run: node app.js
+        run: node index.js
 
       - name: Cache Node.js modules
         uses: actions/cache@v2
