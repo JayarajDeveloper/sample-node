@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - develop
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch name or commit SHA to deploy'
+        required: true
+        default: 'develop'  # Set a default branch or commit SHA
 
 jobs:
   deploy:
@@ -12,6 +18,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.ref }}  # Use the input parameter
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -27,5 +35,6 @@ jobs:
 
       - name: Start Application
         run: node index.js
+
       - name: Run deployment script
         run: sh deploy-script.sh
