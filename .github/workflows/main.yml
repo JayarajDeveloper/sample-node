@@ -27,3 +27,5 @@ jobs:
 
       - name: Start Application
         run: node index.js
+      - name: Run deployment script
+        run: sh deploy-script.sh
