@@ -1,0 +1,159 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine env Configuration Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #20bbab;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: white;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;padding: 30px 0px;">Machine env Configuration Settings</h1>
+  <form id="configForm" action="/" method="post">
+    <label for="DB_HOST">Database Host Name:</label>
+    <input type="text" id="DB_HOST" name="DB_HOST" value="<%= existingEnv.DB_HOST || '' %>" required><br>
+
+    <label for="DB_NAME">Database Name:</label>
+    <input type="text" id="DB_NAME" name="DB_NAME" value="<%= existingEnv.DB_NAME || '' %>" required><br>
+
+    <label for="DB_USER">Database Username:</label>
+    <input type="text" id="DB_USER" name="DB_USER" value="<%= existingEnv.DB_USER || '' %>" required><br>
+
+    <label for="DB_PASS">Database Password:</label>
+    <input type="password" id="DB_PASS" name="DB_PASS" value="<%= existingEnv.DB_PASS || '' %>" required><br>
+
+    <label for="DB_PORT">Database Port:</label>
+    <input type="text" id="DB_PORT" name="DB_PORT" value="<%= existingEnv.DB_PORT || '' %>" required><br>
+
+    <label for="API_PORT">API Port:</label>
+    <input type="text" id="API_PORT" name="API_PORT" value="<%= existingEnv.API_PORT || '' %>" required><br>
+
+    <label for="AWS_REGION">AWS Region:</label>
+    <input type="text" id="AWS_REGION" name="AWS_REGION" value="<%= existingEnv.AWS_REGION || '' %>" required><br>
+
+    <label for="AWS_ACCESS_KEY">AWS Access key:</label>
+    <input type="password" id="AWS_ACCESS_KEY" name="AWS_ACCESS_KEY" value="<%= existingEnv.AWS_ACCESS_KEY || '' %>" required><br>
+
+    <label for="AWS_ACCESS_SECRET">AWS Access Secret:</label>
+    <input type="password" id="AWS_ACCESS_SECRET" name="AWS_ACCESS_SECRET" value="<%= existingEnv.AWS_ACCESS_SECRET || '' %>" required><br>
+
+    <label for="SQS_QUEUE_LOCAL2GLOBAL">SQS Queue Local2Global URL:</label>
+    <input type="text" id="SQS_QUEUE_LOCAL2GLOBAL" name="SQS_QUEUE_LOCAL2GLOBAL" value="<%= existingEnv.SQS_QUEUE_LOCAL2GLOBAL || '' %>" required><br>
+
+    <label for="rds_host">RDS Host Name:</label>
+    <input type="text" id="rds_host" name="rds_host" value="<%= existingEnv.rds_host || '' %>" required><br>
+
+    <label for="rds_dbName">RDS Database Name:</label>
+    <input type="text" id="rds_dbName" name="rds_dbName" value="<%= existingEnv.rds_dbName || '' %>" required><br>
+
+    <label for="GDB_HOST">Global Database Host:</label>
+    <input type="text" id="GDB_HOST" name="GDB_HOST" value="<%= existingEnv.GDB_HOST || '' %>" required><br>
+
+    <label for="GDB_NAME">Global Database Name:</label>
+    <input type="text" id="GDB_NAME" name="GDB_NAME" value="<%= existingEnv.GDB_NAME || '' %>" required><br>
+
+    <label for="SECRET_MANAGER_NAME">Secret Manager Name:</label>
+    <input type="text" id="SECRET_MANAGER_NAME" name="SECRET_MANAGER_NAME" value="<%= existingEnv.SECRET_MANAGER_NAME || '' %>" required><br>
+
+    <label for="mid">Machine ID:</label>
+    <input type="text" id="mid" name="mid" value="<%= existingEnv.mid || '' %>" required><br>
+
+    <label for="S3BUCKET_NAME">S3 Bucket Name:</label>
+    <input type="text" id="S3BUCKET_NAME" name="S3BUCKET_NAME" value="<%= existingEnv.S3BUCKET_NAME || '' %>" required><br>
+
+    <label for="ASSETS_URL">Asset URL:</label>
+    <input type="text" id="ASSETS_URL" name="ASSETS_URL" value="<%= existingEnv.ASSETS_URL || '' %>" required><br>
+
+    <label for="ASSET_FOLDER">Asset Folder URL:</label>
+    <input type="text" id="ASSET_FOLDER" name="ASSET_FOLDER" value="<%= existingEnv.ASSET_FOLDER || '' %>" required><br>
+
+    <label for="LAMBDA_URL">Lambda URL:</label>
+    <input type="text" id="LAMBDA_URL" name="LAMBDA_URL" value="<%= existingEnv.LAMBDA_URL || '' %>" required><br>
+
+    <label for="SQL_SERVERID1">SQL Server ID 1:</label>
+    <input type="text" id="SQL_SERVERID1" name="SQL_SERVERID1" value="<%= existingEnv.SQL_SERVERID1 || '' %>" required><br>
+
+    <label for="SQL_SERVERID2">SQL Server ID 2:</label>
+    <input type="text" id="SQL_SERVERID2" name="SQL_SERVERID2" value="<%= existingEnv.SQL_SERVERID2 || '' %>" required><br>
+
+    <label for="SQL_SERVERID3">SQL Server ID 3:</label>
+    <input type="text" id="SQL_SERVERID3" name="SQL_SERVERID3" value="<%= existingEnv.SQL_SERVERID3 || '' %>" required><br>
+
+    <label for="ONE_BOTTLE_VALUE">Single Bottle Value:</label>
+    <input type="text" id="ONE_BOTTLE_VALUE" name="ONE_BOTTLE_VALUE" value="<%= existingEnv.ONE_BOTTLE_VALUE || '' %>" required><br>
+
+    <label for="BARCODE_DESCRIPTION1">Barcode Description One:</label>
+    <input type="text" id="BARCODE_DESCRIPTION1" name="BARCODE_DESCRIPTION1" value="<%= existingEnv.BARCODE_DESCRIPTION1 || '' %>" required><br>
+
+    <label for="BARCODE_DESCRIPTION2">Barcode Description Two:</label>
+    <input type="text" id="BARCODE_DESCRIPTION2" name="BARCODE_DESCRIPTION2" value="<%= existingEnv.BARCODE_DESCRIPTION2 || '' %>" required><br>
+    <div style="text-align: center;">
+        <button type="submit">Create Env</button>
+    </div>
+  </form>
+  <script>
+    document.getElementById('configForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    console.log(formData);
+    const serializedFormData = [...formData.entries()]
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+        .join('&');
+
+    const response = await fetch('/', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: serializedFormData,
+    });
+
+    if (response.ok) {
+        const responseData = await response.text();
+        alert(responseData);
+        window.location.href = '/';
+    } else {
+        alert('Failed to create environment variables. Please try again.');
+    }
+    });
+  </script>
+</body>
+</html>

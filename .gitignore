@@ -1,0 +1,28 @@
+# Compiled python files
+__pycache__/
+*.pyc
+
+# Serverless
+.serverless
+
+# Dependencies
+venv/
+#env/
+#*.env
+
+# Local development files
+#.env.local
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Logs
+*.log
+
+# Node.js dependencies
+node_modules/
+
+# Package.json
+
